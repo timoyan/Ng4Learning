@@ -1,0 +1,27 @@
+.footer-section-container{
+    border-bottom: 1px solid black;
+    padding:15px 0px;
+    flex: 1 1 auto;
+    
+    div{
+        flex:0.9 0.9 auto;
+
+        h3{
+            padding:15px 0px;
+            border-bottom: 1px solid gray;
+        }
+    }
+
+    div:not(:first-child) {
+        //background-color: #900;
+        margin-left:10px;
+    }
+}
+
+.footer-bottom-container{
+    flex: 0 0 auto;
+
+    .fa-copyright{
+        margin:0px 2px;
+    }
+}
