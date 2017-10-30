@@ -1,0 +1,31 @@
+header{
+    flex:0 0 auto;
+    background-color: lightskyblue;
+    padding: 0px 15%;
+    height: 80px;
+}
+
+main{
+    flex: 1 1 auto;
+    padding: 0px 15%;
+}
+
+footer{
+    flex: 0 0 auto;
+    background-color: #1C1C1C;
+    padding: 0px 15%;
+    height: 300px;
+    color:white;
+}
+
+@media (min-width: 768px) { 
+    main{
+        min-height: 400px;
+    }
+}
+
+@media (max-width:767px) {
+    main{
+        min-height:300px;
+    }
+}
