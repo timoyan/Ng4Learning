@@ -1,17 +1,28 @@
-<div class="d-flex flex-row justify-content-center align-items-center login-container">
+<div class="d-flex flex-row justify-content-center login-container">
   <div class="d-flex flex-column login-intro-container">
-    <h3>Welcome</h3>
+    <h3 class="login-intro-title align-self-center">Login to find your free style</h3>
+    <div class="d-flex flex-row login-image-container">
+      <div>
+          <img class="login-intro-image" src="/assets/images/login-women.jpg" alt="">
+      </div>
+      <div>
+          <!-- <img class="login-intro-image" src="/assets/images/login-women.jpg" alt=""> -->
+          <img class="login-intro-image align-self-center" src="/assets/images/login-men.jpg" alt="">
+      </div>
+    </div>
   </div>
-  <div class="d-flex flex-row login-form-container">
+  <div class="d-flex flex-row align-self-start login-form-container">
     <form>
+      <div class="login-form-section-title">Log In</div>
       <div class="form-group">
-        <label for="formGroupExampleInput">Example label</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+        <label for="txtAccount">Account</label>
+        <input type="text" class="form-control" id="txtAccount" name="txtAccount" placeholder="Account">
       </div>
       <div class="form-group">
-        <label for="formGroupExampleInput2">Another label</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+        <label for="txtPassword">Password</label>
+        <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password">
       </div>
+      <button type="submit" class="btn btn-primary pull-right">Sign in</button>
     </form>
   </div>
 </div>
