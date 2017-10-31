@@ -1,23 +1,36 @@
 <div class="d-flex flex-row justify-content-center align-items-center">
   <h2>Ti Mall</h2>
   <div class="menu-container">
-    <span class="menu-item">Home<i class="fa fa-caret-down fa-lg"></i></span>
-    <span class="menu-item">Account<i class="fa fa-caret-down fa-lg"></i></span>
-    <span class="menu-item">Pages<i class="fa fa-caret-down fa-lg"></i></span>
-    <span class="menu-item">Computer<i class="fa fa-caret-down fa-lg"></i></span>
-    <span class="menu-item">Contact<i class="fa fa-caret-down fa-lg"></i></span>
+    <a routerLink="/" routerLinkActive="active">
+        <span class="menu-item">Home<i class="fa fa-caret-down fa-lg"></i></span>        
+    </a>
+    <a routerLink="/" routerLinkActive="active">
+      <span class="menu-item">Account<i class="fa fa-caret-down fa-lg"></i></span>
+    </a>
+    <a routerLink="/" routerLinkActive="active">
+      <span class="menu-item">Pages<i class="fa fa-caret-down fa-lg"></i></span>
+    </a>
+    <a routerLink="/" routerLinkActive="active">
+      <span class="menu-item">Computer<i class="fa fa-caret-down fa-lg"></i></span>
+    </a>
+    <a routerLink="/" routerLinkActive="active">
+      <span class="menu-item">Contact<i class="fa fa-caret-down fa-lg"></i></span>
+    </a>
   </div>
   <div class="function-container">
-    <a routerLink="/login" routerLinkActive="active" class="badge badge-info">
-        <span class="">Login</span>
+    <a *ngIf="authService.loginStatus === 0" routerLink="/login" routerLinkActive="active" class="badge badge-info">
+      <span class="" >Log in</span>    
+    </a>
+    <a href="#" *ngIf="authService.loginStatus === 1" (click)="onLogOut($event)" class="badge badge-info">
+      <span class="" >Log out</span>
     </a>
     <a href="#" class="badge badge-info">
-        <span class="">Sign up</span>
+      <span class="">Sign up</span>
     </a>
     <a href="#" class="badge badge-info">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        <span>3</span>Items -
-        <span>{{'300' | currency:'USD':true}}</span>
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <span>3</span>Items -
+      <span>{{'300' | currency:'USD':true}}</span>
     </a>
   </div>
 </div>
