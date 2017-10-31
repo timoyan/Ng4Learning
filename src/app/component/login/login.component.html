@@ -12,15 +12,15 @@
     </div>
   </div>
   <div class="d-flex flex-row align-self-start login-form-container">
-    <form>
+      <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" >
       <div class="login-form-section-title">Log In</div>
       <div class="form-group">
-        <label for="txtAccount">Account</label>
-        <input type="text" class="form-control" id="txtAccount" name="txtAccount" placeholder="Account">
+        <label for="username">Account</label>
+        <input type="text" class="form-control"  name="username" placeholder="Account" ngModel>
       </div>
       <div class="form-group">
-        <label for="txtPassword">Password</label>
-        <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="Password">
+        <label for="psd">Password</label>
+        <input type="password" class="form-control" name="psd" placeholder="Password" ngModel>
       </div>
       <button type="submit" class="btn btn-primary pull-right">Sign in</button>
     </form>
