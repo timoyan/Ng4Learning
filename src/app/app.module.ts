@@ -9,13 +9,20 @@ import { LoginComponent } from './component/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './service/auth.service';
+import { ProductsComponent } from './component/products/products.component';
+import { HomeComponent } from './component/home/home.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ProductsComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
