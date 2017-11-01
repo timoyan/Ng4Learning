@@ -8,6 +8,8 @@ Command `ng new TiMall -dir="Ng4Learning" --routing -sg -si -st --style=scss -v`
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+Run `ng serve --host 0.0.0.0 --port 4200 disable-host-check` for a host server can access by others.
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
