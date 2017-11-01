@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AuthService {
-  public loginStatus = 0; // 0 = not logged in, 1 = logged in
-  /**
-   *
-   */
+
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {
 
   }
@@ -22,10 +22,11 @@ export class AuthService {
       req.subscribe(rsp => {
         if (rsp != null && rsp !== undefined && rsp.hasOwnProperty('token')) {
           this.setAuthToken(rsp['token']);
-          this.loginStatus = 1;
+          this.isLoggedIn.next(true);
           observer.next();
         } else {
-          this.loginStatus = 0;
+          this.isLoggedIn.next(false);
+          observer.error();
         }
         observer.complete();
       });
@@ -38,19 +39,7 @@ export class AuthService {
 
   logout(): void {
     this.clearAuthToken();
-    this.loginStatus = 0;
-  }
-
-  validateLoginStatus(): boolean {
-    return this.loginStatus === 1;
-  }
-
-  setLoginStatus(): void {
-    if (!!this.getAuthToken()) {
-      this.loginStatus = 1;
-    } else {
-      this.loginStatus = 0;
-    }
+    this.isLoggedIn.next(false);
   }
 
   setAuthToken(token: string): void {
