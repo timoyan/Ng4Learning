@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class AuthService {
@@ -11,27 +13,44 @@ export class AuthService {
 
   }
 
-  login(jsonObject: Object): void {
-    const req = this.http.post('https://pwcfrontendtest.azurewebsites.net/login', jsonObject);
+  login(jsonObject: Object): Observable<object> {
 
-    req.subscribe(rsp => {
+    const source = Observable.create(observer => {
 
-      if (rsp != null && rsp != undefined && rsp.hasOwnProperty('token')) {
-        this.setAuthToken(rsp['token']);
-        this.loginStatus = 1;
-      }
-      else {   
-        this.loginStatus = 0;  
-      }
+      const req = this.http.post('https://pwcfrontendtest.azurewebsites.net/login', jsonObject);
 
-      // Read the result field from the JSON response.
-      console.log(rsp);
+      req.subscribe(rsp => {
+        if (rsp != null && rsp !== undefined && rsp.hasOwnProperty('token')) {
+          this.setAuthToken(rsp['token']);
+          this.loginStatus = 1;
+          observer.next();
+        } else {
+          this.loginStatus = 0;
+        }
+        observer.complete();
+      });
+      // Any cleanup logic might go here
+      return () => console.log('login clean');
     });
+
+    return source;
   }
 
-  logout(): void{
+  logout(): void {
     this.clearAuthToken();
     this.loginStatus = 0;
+  }
+
+  validateLoginStatus(): boolean {
+    return this.loginStatus === 1;
+  }
+
+  setLoginStatus(): void {
+    if (!!this.getAuthToken()) {
+      this.loginStatus = 1;
+    } else {
+      this.loginStatus = 0;
+    }
   }
 
   setAuthToken(token: string): void {

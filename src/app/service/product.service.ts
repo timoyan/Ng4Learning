@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from '../def/product';
 import { HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class ProductService {
