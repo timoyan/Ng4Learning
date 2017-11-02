@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 html, body, .page-container{
     height: 100vh;
+    font-size: 16px;
+}
+
+@media (min-width: 768px) { 
+    .mobile{
+        display: none;
+    }
+ }
+
+@media (max-width:767px) {
+    .desktop{
+        display: none;
+    }
 }

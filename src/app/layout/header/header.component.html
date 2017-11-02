@@ -1,6 +1,9 @@
-<div class="d-flex flex-row justify-content-center align-items-center">
-    <h2>Ti Mall</h2>
-    <div class="menu-container">
+<div class="header-logo-container">
+    <img class="" src="/assets/images/header-logo.jpg" alt="">
+</div>
+
+<div class="menu-container">
+    <div class="desktop">
         <a routerLink="/" routerLinkActive="active">
             <span class="menu-item">Home<i class="fa fa-caret-down fa-lg"></i></span>
         </a>
@@ -17,20 +20,28 @@
             <span class="menu-item">Contact<i class="fa fa-caret-down fa-lg"></i></span>
         </a>
     </div>
-    <div class="function-container">
-        <a [hidden]="(authService.isLoggedIn | async)" routerLink="/login" routerLinkActive="active" class="badge badge-info">
-            <span class="">Log in</span>
-        </a>
-        <a href="#" [hidden]="!(authService.isLoggedIn | async)" (click)="onLogOut($event)" class="badge badge-info">
-            <span class="">Log out</span>
-        </a>
-        <a href="#" class="badge badge-info">
-            <span class="">Sign up</span>
-        </a>
-        <a href="#" class="badge badge-info">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            <span>0</span> Items -
-            <span>{{'0' | currency:'USD':true}}</span>
-        </a>
-    </div>
+    <select class="mobile header-menu" (change)="navgate_onChange($event)" name="" id="">
+        <option value="home">Home</option>
+        <option value="Account">Account</option>
+        <option value="products">Men</option>
+        <option value="products">Women</option>
+        <option value="Contact">Contact</option>
+    </select>
+</div>
+
+<div class="function-container">
+    <a [hidden]="(authService.isLoggedIn | async)" routerLink="/login" routerLinkActive="active" class="badge badge-info">
+        <span class="">Log in</span>
+    </a>
+    <a href="#" [hidden]="!(authService.isLoggedIn | async)" (click)="onLogOut($event)" class="badge badge-info">
+        <span class="">Log out</span>
+    </a>
+    <a href="#" class="badge badge-info">
+        <span class="">Sign up</span>
+    </a>
+    <a href="#" class="badge badge-info">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        <span>0</span> Items -
+        <span>{{'0' | currency:'USD':true}}</span>
+    </a>
 </div>

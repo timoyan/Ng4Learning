@@ -1,11 +1,9 @@
-<div class="d-flex flex-row flex-wrap justify-content-start align-content-start product-list-container">
-  <ng-container *ngFor="let product of productList; let i = index">
-    <div class="d-flex  flex-column card">
-      <div class="card-image-container">
-        <img [src]='product.imgurl'>
-      </div>
-      <span>{{product.name}}</span>
-      <p class="card-text">{{product.description}}</p>
+<ng-container *ngFor="let product of productList; let i = index">
+  <div class="d-flex product-card">
+    <div class="card-image-container">
+      <img [src]='product.imgurl'>
+      <span class="product-card-name">{{product.name}}</span>
     </div>
-  </ng-container>
-</div>
+    <p class="product-card-text">{{product.description}}</p>
+  </div>
+</ng-container>
