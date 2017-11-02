@@ -1,5 +1,11 @@
-<ul>
-  <li *ngFor="let product of productList; let i = index">
-    {{ i + 1 }} - {{ product.name }}
-  </li>
-</ul>
+<div class="d-flex flex-row flex-wrap justify-content-start align-content-start product-list-container">
+  <ng-container *ngFor="let product of productList; let i = index">
+    <div class="d-flex  flex-column card">
+      <div class="card-image-container">
+        <img [src]='product.imgurl'>
+      </div>
+      <span>{{product.name}}</span>
+      <p class="card-text">{{product.description}}</p>
+    </div>
+  </ng-container>
+</div>
