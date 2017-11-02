@@ -18,13 +18,18 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.auth.isLoggedIn.value) {
+      this.route.navigate(['/home']);
+    }
+
     this.loginForm.reset();
   }
 
   onSubmit(form: NgForm): void {
     this.auth.login(form.value)
       .subscribe(() => {
-        this.route.navigateByUrl('/products');
-      });
+        this.route.navigateByUrl('/home');
+      },
+      e => { alert(e) });
   }
 }

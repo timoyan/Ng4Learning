@@ -18,7 +18,7 @@
         </a>
     </div>
     <div class="function-container">
-        <a [hidden]="authService.isLoggedIn | async" routerLink="/login" routerLinkActive="active" class="badge badge-info">
+        <a [hidden]="(authService.isLoggedIn | async)" routerLink="/login" routerLinkActive="active" class="badge badge-info">
             <span class="">Log in</span>
         </a>
         <a href="#" [hidden]="!(authService.isLoggedIn | async)" (click)="onLogOut($event)" class="badge badge-info">

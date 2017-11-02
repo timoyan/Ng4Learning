@@ -13,6 +13,8 @@ export class AppComponent {
    */
   constructor(private router: Router, private authService: AuthService) {
 
+    this.authService.validateLoginStatus();
+
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         console.log(event);

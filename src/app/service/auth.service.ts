@@ -26,7 +26,7 @@ export class AuthService {
           observer.next();
         } else {
           this.isLoggedIn.next(false);
-          observer.error();
+          observer.error(rsp['status']);
         }
         observer.complete();
       });
@@ -37,20 +37,32 @@ export class AuthService {
     return source;
   }
 
+  validateLoginStatus(): boolean {
+    let result: boolean = !!this.getAuthToken();
+
+    if (result) {
+      this.isLoggedIn.next(true);
+    } else {
+      this.isLoggedIn.next(false);
+    }
+
+    return result;
+  }
+
   logout(): void {
     this.clearAuthToken();
     this.isLoggedIn.next(false);
   }
 
   setAuthToken(token: string): void {
-    sessionStorage.setItem('TiMallToken', token);
+    localStorage.setItem('TiMallToken', token);
   }
 
   getAuthToken(): string {
-    return sessionStorage.getItem('TiMallToken');
+    return localStorage.getItem('TiMallToken');
   }
 
   clearAuthToken(): void {
-    sessionStorage.removeItem('TiMallToken');
+    localStorage.removeItem('TiMallToken');
   }
 }
