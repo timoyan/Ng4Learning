@@ -1,48 +1,68 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AuthService {
-  public loginStatus = 0; // 0 = not logged in, 1 = logged in
-  /**
-   *
-   */
+
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) {
 
   }
 
-  login(jsonObject: Object): void {
-    const req = this.http.post('https://pwcfrontendtest.azurewebsites.net/login', jsonObject);
+  login(jsonObject: Object): Observable<object> {
 
-    req.subscribe(rsp => {
+    const source = Observable.create(observer => {
 
-      if (rsp != null && rsp != undefined && rsp.hasOwnProperty('token')) {
-        this.setAuthToken(rsp['token']);
-        this.loginStatus = 1;
-      }
-      else {   
-        this.loginStatus = 0;  
-      }
+      const req = this.http.post('https://pwcfrontendtest.azurewebsites.net/login', jsonObject);
 
-      // Read the result field from the JSON response.
-      console.log(rsp);
+      req.subscribe(rsp => {
+        if (rsp != null && rsp !== undefined && rsp.hasOwnProperty('token')) {
+          this.setAuthToken(rsp['token']);
+          this.isLoggedIn.next(true);
+          observer.next();
+        } else {
+          this.isLoggedIn.next(false);
+          observer.error(rsp['status']);
+        }
+        observer.complete();
+      });
+      // Any cleanup logic might go here
+      return () => console.log('login clean');
     });
+
+    return source;
   }
 
-  logout(): void{
+  validateLoginStatus(): boolean {
+    let result: boolean = !!this.getAuthToken();
+
+    if (result) {
+      this.isLoggedIn.next(true);
+    } else {
+      this.isLoggedIn.next(false);
+    }
+
+    return result;
+  }
+
+  logout(): void {
     this.clearAuthToken();
-    this.loginStatus = 0;
+    this.isLoggedIn.next(false);
   }
 
   setAuthToken(token: string): void {
-    sessionStorage.setItem('TiMallToken', token);
+    localStorage.setItem('TiMallToken', token);
   }
 
   getAuthToken(): string {
-    return sessionStorage.getItem('TiMallToken');
+    return localStorage.getItem('TiMallToken');
   }
 
   clearAuthToken(): void {
-    sessionStorage.removeItem('TiMallToken');
+    localStorage.removeItem('TiMallToken');
   }
 }

@@ -1,36 +1,36 @@
 <div class="d-flex flex-row justify-content-center align-items-center">
-  <h2>Ti Mall</h2>
-  <div class="menu-container">
-    <a routerLink="/" routerLinkActive="active">
-        <span class="menu-item">Home<i class="fa fa-caret-down fa-lg"></i></span>        
-    </a>
-    <a routerLink="/" routerLinkActive="active">
-      <span class="menu-item">Account<i class="fa fa-caret-down fa-lg"></i></span>
-    </a>
-    <a routerLink="/" routerLinkActive="active">
-      <span class="menu-item">Pages<i class="fa fa-caret-down fa-lg"></i></span>
-    </a>
-    <a routerLink="/" routerLinkActive="active">
-      <span class="menu-item">Computer<i class="fa fa-caret-down fa-lg"></i></span>
-    </a>
-    <a routerLink="/" routerLinkActive="active">
-      <span class="menu-item">Contact<i class="fa fa-caret-down fa-lg"></i></span>
-    </a>
-  </div>
-  <div class="function-container">
-    <a *ngIf="authService.loginStatus === 0" routerLink="/login" routerLinkActive="active" class="badge badge-info">
-      <span class="" >Log in</span>    
-    </a>
-    <a href="#" *ngIf="authService.loginStatus === 1" (click)="onLogOut($event)" class="badge badge-info">
-      <span class="" >Log out</span>
-    </a>
-    <a href="#" class="badge badge-info">
-      <span class="">Sign up</span>
-    </a>
-    <a href="#" class="badge badge-info">
-      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-      <span>3</span>Items -
-      <span>{{'300' | currency:'USD':true}}</span>
-    </a>
-  </div>
+    <h2>Ti Mall</h2>
+    <div class="menu-container">
+        <a routerLink="/" routerLinkActive="active">
+            <span class="menu-item">Home<i class="fa fa-caret-down fa-lg"></i></span>
+        </a>
+        <a routerLink="/" routerLinkActive="active">
+            <span class="menu-item">Account<i class="fa fa-caret-down fa-lg"></i></span>
+        </a>
+        <a routerLink="/products" routerLinkActive="active">
+            <span class="menu-item">Men<i class="fa fa-caret-down fa-lg"></i></span>
+        </a>
+        <a routerLink="/products" routerLinkActive="active">
+            <span class="menu-item">Women<i class="fa fa-caret-down fa-lg"></i></span>
+        </a>
+        <a routerLink="/" routerLinkActive="active">
+            <span class="menu-item">Contact<i class="fa fa-caret-down fa-lg"></i></span>
+        </a>
+    </div>
+    <div class="function-container">
+        <a [hidden]="(authService.isLoggedIn | async)" routerLink="/login" routerLinkActive="active" class="badge badge-info">
+            <span class="">Log in</span>
+        </a>
+        <a href="#" [hidden]="!(authService.isLoggedIn | async)" (click)="onLogOut($event)" class="badge badge-info">
+            <span class="">Log out</span>
+        </a>
+        <a href="#" class="badge badge-info">
+            <span class="">Sign up</span>
+        </a>
+        <a href="#" class="badge badge-info">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span>0</span> Items -
+            <span>{{'0' | currency:'USD':true}}</span>
+        </a>
+    </div>
 </div>
