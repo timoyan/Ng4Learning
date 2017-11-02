@@ -9,13 +9,21 @@ import { Router, NavigationStart } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  show = true;
+  currentUrl: string;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        console.log("Header url subscribe : " + event.url);
+        console.log('Header url subscribe : ' + event.url);
+        this.currentUrl = event.url;
       }
+    });
+
+    this.authService.isLoggedIn.subscribe(val => {
+      this.show = val;
     });
   }
 
@@ -27,7 +35,7 @@ export class HeaderComponent implements OnInit {
   }
 
   navgate_onChange(e) {
-    let navigateLink = e.target.value;
+    const navigateLink = e.target.value;
     console.log(navigateLink);
     this.router.navigate([navigateLink]);
   }

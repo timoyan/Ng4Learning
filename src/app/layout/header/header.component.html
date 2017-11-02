@@ -20,7 +20,7 @@
             <span class="menu-item">Contact<i class="fa fa-caret-down fa-lg"></i></span>
         </a>
     </div>
-    <select class="mobile header-menu" (change)="navgate_onChange($event)" name="" id="">
+    <select class="mobile header-menu" ng-selected="" (change)="navgate_onChange($event)" name="" id="">
         <option value="home">Home</option>
         <option value="Account">Account</option>
         <option value="products">Men</option>
@@ -30,10 +30,12 @@
 </div>
 
 <div class="function-container">
-    <a [hidden]="(authService.isLoggedIn | async)" routerLink="/login" routerLinkActive="active" class="badge badge-info">
+    <!-- [hidden]="(authService.isLoggedIn | async)" -->
+    <a *ngIf="!show" routerLink="/login" routerLinkActive="active" class="badge badge-info">
         <span class="">Log in</span>
     </a>
-    <a href="#" [hidden]="!(authService.isLoggedIn | async)" (click)="onLogOut($event)" class="badge badge-info">
+    <!-- [hidden]="!(authService.isLoggedIn | async)" -->
+    <a *ngIf="show" href="#" (click)="onLogOut($event)" class="badge badge-info">
         <span class="">Log out</span>
     </a>
     <a href="#" class="badge badge-info">
