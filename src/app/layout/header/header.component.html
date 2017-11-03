@@ -41,9 +41,9 @@
     <a href="#" class="badge badge-info">
         <span class="">Sign up</span>
     </a>
-    <a href="#" class="badge badge-info">
+    <a href="#" class="badge badge-info" (click)='ShowCart($event)'>
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-        <span>0</span> Items -
-        <span>{{'0' | currency:'USD':true}}</span>
+        <span>{{cartService.GetItemAmount()}}</span> Items -
+        <span>{{cartService.GetTotalMoney() | currency:'USD':true}}</span>
     </a>
 </div>

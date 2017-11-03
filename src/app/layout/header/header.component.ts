@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { CartService } from '../../service/cart.service';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { CartModalComponent } from '../../component/cart-modal/cart-modal.component';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +17,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('ddlNavigateMenu', { read: ElementRef }) public ddlNavigateMenu: ElementRef;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private cartService: CartService,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.router.events.subscribe(event => {
@@ -54,4 +58,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.router.navigate([navigateLink]);
   }
 
+  ShowCart(e: Event) {
+    const modalRef = this.modalService.open(CartModalComponent, { backdrop: "static" } as NgbModalOptions);
+    modalRef.componentInstance._cart = this.cartService._cart;
+    e.stopPropagation();
+    return false;
+  }
 }

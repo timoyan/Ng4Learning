@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,9 @@ import { ProductsComponent } from './component/products/products.component';
 import { HomeComponent } from './component/home/home.component';
 import { NotFoundComponent } from './component/not-found/not-found.component';
 import { AuthGuard } from './auth.guard';
+import { ProductsItemComponent } from './component/products-item/products-item.component';
+import { CartService } from './service/cart.service';
+import { CartModalComponent} from './component/cart-modal/cart-modal.component'
 
 @NgModule({
   declarations: [
@@ -22,15 +26,21 @@ import { AuthGuard } from './auth.guard';
     LoginComponent,
     ProductsComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ProductsItemComponent,
+    CartModalComponent
+  ],
+  entryComponents:[
+    CartModalComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
-  providers: [AuthService],
+  providers: [AuthService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

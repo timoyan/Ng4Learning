@@ -1,9 +1,3 @@
 <ng-container *ngFor="let product of productList; let i = index">
-  <div class="d-flex product-card">
-    <div class="card-image-container">
-      <img [src]='product.imgurl'>
-      <span class="product-card-name">{{product.name}}</span>
-    </div>
-    <p class="product-card-text">{{product.description}}</p>
-  </div>
+  <app-products-item [ProductData]='product'></app-products-item>
 </ng-container>

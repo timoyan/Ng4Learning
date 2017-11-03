@@ -32,30 +32,5 @@
 }
 
 @media (max-width:767px) {
-    .card-image-container{
-        display: flex;
-        flex-direction: column;
-    }
 
-    .product-card{
-        flex-direction: column;
-        align-items: center;
-        margin:10px 0;
-        padding:30px;
-        background-color: gray;
-    }
-
-    .product-card-name{
-        width:100%;
-        text-align: center;
-        background-color:#fff;
-        border-radius: 10px;
-    }
-
-    .product-card-text{
-        margin-top: 10px;
-        background-color: #fff;
-        border-radius: 10px;
-        padding: 10px;
-    }
 }
