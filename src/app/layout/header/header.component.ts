@@ -1,30 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
 
   show = true;
   currentUrl: string;
+
+  @ViewChild('ddlNavigateMenu', { read: ElementRef }) public ddlNavigateMenu: ElementRef;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        console.log('Header url subscribe : ' + event.url);
-        this.currentUrl = event.url;
+        this.currentUrl = event.url.substring(1, event.url.length);
+        console.log('Header url subscribe : ' + this.currentUrl);
       }
     });
 
     this.authService.isLoggedIn.subscribe(val => {
       this.show = val;
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        let dropdownElement: HTMLSelectElement = this.ddlNavigateMenu.nativeElement;
+        let targetOptionElement: HTMLOptionElement = dropdownElement.querySelector('option[value="' + this.currentUrl + '"]') as HTMLOptionElement;
+        if (!!targetOptionElement) {
+          targetOptionElement.selected = true;
+        }
+      }
+    });
+
   }
 
   onLogOut(e: MouseEvent) {
@@ -34,9 +49,9 @@ export class HeaderComponent implements OnInit {
     return false;
   }
 
-  navgate_onChange(e) {
+  navigate_onChange(e) {
     const navigateLink = e.target.value;
-    console.log(navigateLink);
     this.router.navigate([navigateLink]);
   }
+
 }

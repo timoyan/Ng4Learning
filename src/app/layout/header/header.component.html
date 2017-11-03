@@ -13,18 +13,18 @@
         <a routerLink="/products" routerLinkActive="active">
             <span class="menu-item">Men<i class="fa fa-caret-down fa-lg"></i></span>
         </a>
-        <a routerLink="/products" routerLinkActive="active">
+        <a routerLink="/" routerLinkActive="active">
             <span class="menu-item">Women<i class="fa fa-caret-down fa-lg"></i></span>
         </a>
         <a routerLink="/" routerLinkActive="active">
             <span class="menu-item">Contact<i class="fa fa-caret-down fa-lg"></i></span>
         </a>
     </div>
-    <select class="mobile header-menu" ng-selected="" (change)="navgate_onChange($event)" name="" id="">
+    <select #ddlNavigateMenu class="mobile header-menu" ng-selected="" (change)="navigate_onChange($event)" name="" id="">
         <option value="home">Home</option>
         <option value="Account">Account</option>
         <option value="products">Men</option>
-        <option value="products">Women</option>
+        <option value="">Women</option>
         <option value="Contact">Contact</option>
     </select>
 </div>
