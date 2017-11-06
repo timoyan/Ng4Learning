@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('ddlNavigateMenu', { read: ElementRef }) public ddlNavigateMenu: ElementRef;
 
-  constructor(private authService: AuthService, private router: Router, private cartService: CartService,
+  constructor(private authService: AuthService, private router: Router, public cartService: CartService,
     private modalService: NgbModal) { }
 
   ngOnInit() {

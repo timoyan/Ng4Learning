@@ -15,7 +15,7 @@ export class CartModalRowComponent implements OnInit, AfterContentInit {
   @ViewChild('txtAmount') txtAmount;
 
   public rowStateEnum = CartModalRowStateEnum;
-  private rowState: CartModalRowStateEnum;
+  public rowState: CartModalRowStateEnum;
 
 
   constructor(private cartService: CartService, private eRef: ElementRef) {
