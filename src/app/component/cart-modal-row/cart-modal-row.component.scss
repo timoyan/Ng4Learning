@@ -1,12 +1,12 @@
+:host{
+    display: flex;
+    flex-direction: column;
+}
+
 @media (min-width: 768px) { 
 }
 
 @media (max-width:767px) {
-    .cart-modal-grid-container{
-        flex-direction: column;
-        text-align: center;
-    }
-
     .cart-modal-grid-row{
         flex-direction: row;
         border-bottom: solid 1px black;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CartDTO, CartProductDTO } from '../def/cartDTO';
 import { v4 as uuid } from 'uuid';
 import { ProductDTO } from '../def/productDTO';
+import { Utils } from '../utility/utils';
 
 @Injectable()
 export class CartService {
@@ -28,20 +29,28 @@ export class CartService {
   RemoveItem(product: ProductDTO): void {
     const pindex = this.GetProductListIndex(product);
     if (!!pindex || pindex === 0) {
-      this._cart.productList = this._cart.productList.splice(pindex, 1);
+      this._cart.productList.splice(pindex, 1);
     }
   }
 
-  ChangeItemAmount(product: ProductDTO, minusAmount: number): void {
+  ChangeItemAmount(product: ProductDTO, finalAmount: number): boolean {
     let existedPrd = this.GetCartProduct(product.name);
 
-    if (existedPrd !== undefined) {
-      if (Math.abs(existedPrd.amount) - Math.abs(minusAmount) <= 0) {
-        this.RemoveItem(product);
+    if (existedPrd !== undefined && Utils.isInteger(finalAmount)) {
+      if (finalAmount <= 0) {
+        if (window.confirm(`Are you sure getting rid of this item ${product.name}`)) {
+          this.RemoveItem(product);
+        } else {
+          return false;
+        }
       } else {
-        existedPrd.amount = Math.abs(existedPrd.amount) - Math.abs(minusAmount);
+        existedPrd.amount = finalAmount;
       }
+    } else {
+      return false;
     }
+
+    return true;
   }
 
   GetItemAmount(): number {
@@ -56,6 +65,10 @@ export class CartService {
     });
 
     return result;
+  }
+
+  Checkout(): void {
+    alert(JSON.stringify(this._cart));
   }
 
   private GetProductListIndex(product: ProductDTO): number {

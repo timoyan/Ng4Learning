@@ -16,7 +16,8 @@ import { NotFoundComponent } from './component/not-found/not-found.component';
 import { AuthGuard } from './auth.guard';
 import { ProductsItemComponent } from './component/products-item/products-item.component';
 import { CartService } from './service/cart.service';
-import { CartModalComponent} from './component/cart-modal/cart-modal.component'
+import { CartModalComponent} from './component/cart-modal/cart-modal.component';
+import { CartModalRowComponent } from './component/cart-modal-row/cart-modal-row.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CartModalComponent} from './component/cart-modal/cart-modal.component'
     HomeComponent,
     NotFoundComponent,
     ProductsItemComponent,
-    CartModalComponent
+    CartModalComponent,
+    CartModalRowComponent
   ],
   entryComponents:[
     CartModalComponent

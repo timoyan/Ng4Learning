@@ -1,0 +1,11 @@
+<div class="d-flex cart-modal-grid-row padding-5" [ngClass]="{'odd-active': o, 'even-active': e}">
+  <span class="cart-modal-grid-row-column-name">{{ _cartPrd.product.name }}</span>
+  <div class="cart-modal-grid-row-column-amount">
+    <ng-container [ngSwitch]="rowState">
+      <span *ngSwitchCase="rowStateEnum.Display" (click)='toggleRowState($event)' class="">{{ _cartPrd.amount}}</span>
+      <input #txtAmount *ngSwitchCase="rowStateEnum.Edit" (blur)='toggleRowState($event)' (change)='changeAmount($event)' class="" [value]="_cartPrd.amount">
+    </ng-container>
+  </div>
+
+  <span class="cart-modal-grid-row-column-price">{{ _cartPrd.amount * _cartPrd.product.price | currency:'USD':true}}</span>
+</div>

@@ -8,17 +8,7 @@
   <!-- {{_cart | json}} -->
   <div class="d-flex cart-modal-grid-container">
     <ng-container *ngFor="let cartPrd of _cart.productList; let i = index; let o = odd; let e = even;">
-      <div class="d-flex cart-modal-grid-row padding-5" [ngClass]="{'odd-active': o, 'even-active': e}">
-        <span class="cart-modal-grid-row-column-name">{{ cartPrd.product.name }}</span>
-        <div class="cart-modal-grid-row-column-amount">
-            <ng-container ngSwitch="edit">
-                <span *ngSwitchCase="'display'" class="">{{ cartPrd.amount}}</span>   
-                <input *ngSwitchCase="'edit'" class="" [value]="cartPrd.amount">         
-            </ng-container>
-        </div>
-
-        <span class="cart-modal-grid-row-column-price">{{ cartPrd.amount * cartPrd.product.price | currency:'USD':true}}</span>
-      </div>
+      <app-cart-modal-row [cartPrd]="cartPrd"></app-cart-modal-row>
     </ng-container>
     <div class="d-flex cart-modal-grid-row no-bottom-line">
         <span class="cart-modal-grid-row-column-name"></span>
