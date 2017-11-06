@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../def/product';
+import { ProductDTO } from '../def/productDTO';
 import { HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs/Observable';
@@ -13,13 +13,13 @@ export class ProductService {
 
   }
 
-  GetProducts(): Observable<Product[]> {
+  GetProducts(): Observable<ProductDTO[]> {
 
     return this.http.get('https://pwcfrontendtest.azurewebsites.net/getlist', {
       headers: new HttpHeaders().set('RequestVerificationToken', this.authService.getAuthToken()),
     })
       .map((response: Response) => {
-        return response['res'].map((prd) => prd as Product);
+        return response['res'].map((prd) => prd as ProductDTO);
       });
 
   }

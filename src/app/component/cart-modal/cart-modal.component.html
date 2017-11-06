@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <h4 class="modal-title">Shopping Cart</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+  <!-- {{_cart | json}} -->
+  <div class="d-flex cart-modal-grid-container">
+    <ng-container *ngFor="let cartPrd of _cart.productList; let i = index; let o = odd; let e = even;">
+      <app-cart-modal-row [cartPrd]="cartPrd"></app-cart-modal-row>
+    </ng-container>
+    <div class="d-flex cart-modal-grid-row no-bottom-line">
+        <span class="cart-modal-grid-row-column-name"></span>
+        <span class="cart-modal-grid-row-column-amount">Total</span>
+        <span class="cart-modal-grid-row-column-price">{{ GetTotalPrice() | currency:'USD':true}}</span>
+      </div>
+    <div></div>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Continue Shopping</button>
+  <button type="button" class="btn btn-outline-dark" (click)="Checkout();">Checkout</button>
+</div>

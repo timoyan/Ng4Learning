@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../service/product.service';
-import { Product } from '../../def/product';
+import { ProductDTO } from '../../def/productDTO';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { ProductsItemComponent } from '../products-item/products-item.component';
 
 
 @Component({
@@ -12,7 +13,7 @@ import 'rxjs/add/operator/map';
   providers: [ProductService]
 })
 export class ProductsComponent implements OnInit {
-  productList: Product[];
+  productList: ProductDTO[];
 
   constructor(private productService: ProductService) { }
 

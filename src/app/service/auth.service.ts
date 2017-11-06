@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+// import 'rxjs/add/operator/timeout';
+// import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +20,7 @@ export class AuthService {
     const source = Observable.create(observer => {
 
       const req = this.http.post('https://pwcfrontendtest.azurewebsites.net/login', jsonObject);
-
+      //req.(2000, 'Connection time out, please try again later.');
       req.subscribe(rsp => {
         if (rsp != null && rsp !== undefined && rsp.hasOwnProperty('token')) {
           this.setAuthToken(rsp['token']);
@@ -29,6 +31,8 @@ export class AuthService {
           observer.error(rsp['status']);
         }
         observer.complete();
+      }, (e:Error) => {
+        console.log(e.name);
       });
       // Any cleanup logic might go here
       return () => console.log('login clean');

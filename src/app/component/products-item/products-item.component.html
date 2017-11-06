@@ -1,0 +1,11 @@
+<div class="d-flex product-card">
+  <div class="card-image-container">
+    <img [src]='productData.imgurl'>
+    <span class="product-card-name">{{productData.name}}</span>
+  </div>
+  <p class="product-card-text">{{productData.description}}</p>
+  <div>
+    <span>{{productData.price | currency:'USD':true}}</span>
+    <button (click)="addToCart($event);">Add Cart</button>
+  </div>
+</div>
