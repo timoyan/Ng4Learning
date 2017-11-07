@@ -1,44 +1,44 @@
-header{
-    // flex:0 0 auto;
+header {
     background-color: lightskyblue;
 }
 
-main{
+main {
     flex: 1 1 auto;
     min-height: 300px;
     flex-direction: column;
 }
 
-footer{
+footer {
     background-color: #1C1C1C;
-    color:white;
+    color: white;
 }
 
-@media (min-width: 768px) { 
-    header{
-        flex:0.2;
+@media (min-width: 768px) {
+    header {
+        flex: 0.3;
     }
-
-    main{
-        flex:1.8;
+    main {
+        flex: 1.8;
     }
-
-    section{
+    section {
         flex: 1 1 auto;
     }
-
-    footer{
+    footer {
         flex: 0 0 auto;
     }
 }
 
-@media (max-width:767px) {
-    header{
-        min-height: 100px;
-        max-height: 100px;
+@media (max-width:768px) {
+    header {
+        flex: 0.3;
     }
-
-    footer{
-        margin-top:10px;
+    main {
+        flex: 1.8;
+    }
+    section {
+        flex: 1 1 auto;
+    }
+    footer {
+        flex: 0 0 auto;
     }
 }

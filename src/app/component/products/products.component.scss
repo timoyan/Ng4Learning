@@ -1,19 +1,18 @@
 :host {
-    display: flex; 
+    display: flex;
     width: 100%;
-
 }
 
-@media (min-width: 768px) { 
-    :host{
+@media (min-width: 768px) {
+     :host {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: flex-start;
     }
 }
 
-@media (max-width:767px) {
-    :host{
+@media (max-width:768px) {
+     :host {
         flex-direction: column;
     }
 }
