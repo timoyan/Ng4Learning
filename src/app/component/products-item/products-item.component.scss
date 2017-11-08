@@ -1,5 +1,5 @@
 :host {
-    flex: 1 1 20%;
+    flex: 0.5 0.5 20%;
     display: flex;
 }
 
@@ -9,6 +9,7 @@
     padding: 30px;
     background-color: gray;
     height: 100%;
+    width: 100%;
 }
 
 .card-image-container {
@@ -43,8 +44,12 @@
             height: 100%;
         }
     }
+    .product-card-name{
+        width:60%;
+    }
     .product-card-text {
         overflow-wrap: break-word;
+        width:60%;
     }
 }
 
