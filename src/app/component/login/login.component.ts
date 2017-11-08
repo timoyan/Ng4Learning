@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm): void {
     this.auth.login(form.value)
       .subscribe(() => {
-        this.route.navigateByUrl('/home');
+        this.route.navigateByUrl('/products');
       },
       e => { alert(e) });
   }
