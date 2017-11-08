@@ -1,24 +1,37 @@
 :host {
-    display: block; 
-    width: 100%
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
 }
 
-@media (min-width: 768px) { 
-}
-
-@media (max-width:767px) {
+@media (min-width: 768px) {
     .login-intro-container{
         justify-content: center;
+        flex: 1 1 auto;
+        align-items: center;
     }
-
     .login-form-container{
+        justify-content: center;
+        flex: 1 1 auto;
+    }
+    .login-form-button-container{
+        justify-content: center;
+    }
+}
+
+@media (max-width:768px) {
+    .login-intro-container {
+        justify-content: center;
+    }
+    .login-form-container {
         flex-direction: column;
-        button[type="submit"]{
+        button[type="submit"] {
             align-self: center;
         }
     }
-
-    .login-form-button-container{
+    .login-form-button-container {
         flex-direction: row;
         justify-content: center;
     }

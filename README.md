@@ -10,7 +10,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng serve --host 0.0.0.0 --port 4200 disable-host-check` for a host server can access by others.
 
-Run `ng build --prod --base-href "/Ng4Learning/"` then `angular-cli-ghpages` deploy to github io page.
+Run `ng build --prod --base-href "/Ng4Learning/"` for production.
+
+Run `angular-cli-ghpages` for github io page.
 
 ## Code scaffolding
 

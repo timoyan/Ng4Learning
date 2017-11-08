@@ -18,6 +18,8 @@ import { ProductsItemComponent } from './component/products-item/products-item.c
 import { CartService } from './service/cart.service';
 import { CartModalComponent} from './component/cart-modal/cart-modal.component';
 import { CartModalRowComponent } from './component/cart-modal-row/cart-modal-row.component';
+import { TokenInterceptor } from './interceptor/tokenInterceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,11 @@ import { CartModalRowComponent } from './component/cart-modal-row/cart-modal-row
     AppRoutingModule,
     NgbModule.forRoot()
   ],
-  providers: [AuthService, CartService],
+  providers: [AuthService, CartService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -15,12 +15,13 @@ export class ProductService {
 
   GetProducts(): Observable<ProductDTO[]> {
 
-    return this.http.get('https://pwcfrontendtest.azurewebsites.net/getlist', {
-      headers: new HttpHeaders().set('RequestVerificationToken', this.authService.getAuthToken()),
-    })
+    // return this.http.get('https://pwcfrontendtest.azurewebsites.net/getlist', {
+    //   headers: new HttpHeaders().set('RequestVerificationToken', this.authService.getAuthToken()),
+    // })
+
+    return this.http.get('https://pwcfrontendtest.azurewebsites.net/getlist')
       .map((response: Response) => {
         return response['res'].map((prd) => prd as ProductDTO);
       });
-
   }
 }
