@@ -8,4 +8,8 @@
   </div>
 
   <span class="cart-modal-grid-row-column-price">{{ _cartPrd.amount * _cartPrd.product.price | currency:'USD':true}}</span>
+  <a href="#" (click)="deleteCartItem($event)">
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </a>
+  
 </div>

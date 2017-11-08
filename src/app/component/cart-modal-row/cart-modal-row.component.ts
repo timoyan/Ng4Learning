@@ -48,6 +48,13 @@ export class CartModalRowComponent implements OnInit, AfterContentInit {
     }
   }
 
+  deleteCartItem(e) {
+    if (window.confirm(`Are you sure getting rid of this item ${this._cartPrd.product.name}`)) {
+      this.cartService.RemoveItem(this._cartPrd.product);
+    }
+    return false;
+  }
+
   @HostListener('document:click', ['$event'])
   handleOutsideClick(event) {
     if (!!this.txtAmount) {

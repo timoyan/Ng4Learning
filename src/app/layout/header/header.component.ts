@@ -46,10 +46,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   }
 
-  onLogOut(e: MouseEvent) {
+  onLogOut(e) {
     this.authService.logout();
     this.router.navigate(['/login']);
-    e.stopPropagation();
     return false;
   }
 
