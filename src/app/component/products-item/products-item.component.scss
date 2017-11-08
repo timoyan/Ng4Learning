@@ -1,5 +1,6 @@
 :host {
     flex: 1 1 20%;
+    display: flex;
 }
 
 .product-card {
@@ -36,6 +37,7 @@
 }
 
 @media (min-width: 768px) {
+    :host{}
     .card-image-container {
         img {
             height: 100%;
@@ -46,4 +48,14 @@
     }
 }
 
-@media (max-width:768px) {}
+@media (max-width:768px) {
+    .product-card{
+        width:100%;
+    }
+    .product-card-name{
+        width: 60%;
+    }
+    .product-card-text{
+        width:60%;
+    }
+}

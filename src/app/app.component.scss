@@ -3,6 +3,7 @@ header {
 }
 
 main {
+    display: flex;    
     flex: 1 1 auto;
     min-height: 300px;
     flex-direction: column;
@@ -19,9 +20,14 @@ footer {
     }
     main {
         flex: 1.8;
+        position: relative;
     }
     section {
         flex: 1 1 auto;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        display: block;
     }
     footer {
         flex: 0 0 auto;
